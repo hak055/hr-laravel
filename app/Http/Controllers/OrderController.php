@@ -25,10 +25,10 @@ class OrderController extends Controller
             ->editColumn('status', function($row) {
                 return $row->statusWord();
             })->editColumn('id', function($row) {
-                return '<a href="/HR-php-test/orders/edit/'.$row->id.'">'.$row->id.'</a>'.' '.
+                return '<a href="/orders/edit/'.$row->id.'">'.$row->id.'</a>'.' '.
                 '<a onclick="editForm('.$row->id.')" class="btn btn-sm btn-info">Edit</a>';
             })->rawColumns(['id'])
-            ->addColumn('partner_name', function($row) {
+            ->editColumn('client_email', function($row)  {
                 return $row->partner->name;
             })->addColumn('products_cost', function($row) {
                 return $row->totalsOeder();

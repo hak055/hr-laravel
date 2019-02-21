@@ -48,8 +48,14 @@ class Order extends Model
                     foreach($this->products as $product)
                     {
                         $listProduct[] = $product['name'];
+
+                        
                     }   
-                    return implode(",", $listProduct);
+                    return implode(", ", $listProduct);
+
+                    
+
+
              }
         }
 
