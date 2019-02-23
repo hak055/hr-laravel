@@ -62,7 +62,8 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        return view('order_edit');
+        $order = Order::find($id);
+        return view('order_edit', compact('order'));
     }
 
     /**
@@ -74,7 +75,22 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'client_email' => 'required|email',
+            'partners_name' => 'required|min:5'
+        ]);
+
+
+        $order = Order::find($id);
+        if($order){
+            $order->update($request->all());
+            $order->partner->update(['name' => $request['partners_name']]);
+        }
+
+            return redirect('/orders/index');
+        
+
+
     }
 
     /**
