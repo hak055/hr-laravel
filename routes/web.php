@@ -20,3 +20,7 @@ Route::get('orders/index', 'OrderController@index');
 Route::get('orders/create', 'OrderController@create');
 Route::get('orders/edit/{id}', 'OrderController@edit');
 Route::put('orders/{id}', 'OrderController@update');
+
+
+Route::get('products', 'ProductController@index');
+Route::get('products/create', 'ProductController@create');
