@@ -27,7 +27,11 @@ class ProductController extends Controller
     public function create()
     {
         return Datatables::of(Product::query()->with('vendor'))
-            ->addColumn('vendor_name', function($row) {
+        ->editColumn('price', function($row) {
+            return $row->price.' '.
+                '<a data-toggle="modal" data-target="#exampleModal" class="btn-sm btn-info">Edit</a>';
+        })->rawColumns(['price'])
+        ->addColumn('vendor_name', function($row) {
                 return $row->vendor->name;
             })->make(true);
     }
@@ -74,7 +78,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       //
     }
 
     /**

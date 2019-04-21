@@ -24,3 +24,4 @@ Route::put('orders/{id}', 'OrderController@update');
 
 Route::get('products', 'ProductController@index');
 Route::get('products/create', 'ProductController@create');
+Route::put('products/update', 'ProductController@update');
