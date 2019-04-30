@@ -21,7 +21,7 @@ class OrderController extends Controller
 
    public function create()
    {
-   	   return Datatables::of(Order::query()->with('partner', 'products'))
+   	   $data =  Datatables::of(Order::query()->with('partner', 'products'))
             ->editColumn('status', function($row) {
                 return $row->statusWord();
             })->editColumn('id', function($row) {
@@ -35,6 +35,14 @@ class OrderController extends Controller
             })->addColumn('product_list', function($row) {
                 return $row->listProduct();
             })->make(true);
+
+            return $data;
+
+            $articles = Cache::remember('articles', 22*60, function() {//пример кеширования
+                return $data;
+                            });
+
+            return $articles;
           
    }
 
