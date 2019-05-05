@@ -21,11 +21,11 @@ class OrderController extends Controller
 
    public function create()
    {
-   	   $data =  Datatables::of(Order::query()->with('partner', 'products'))
+   	   return Datatables::of(Order::query()->with('partner', 'products'))
             ->editColumn('status', function($row) {
                 return $row->statusWord();
             })->editColumn('id', function($row) {
-                return '<a href="/orders/edit/'.$row->id.'">'.$row->id.'</a>'.' '.
+                return '<a href="/orders/show/'.$row->id.'">'.$row->id.'</a>'.' '.
                 '<a onclick="editForm('.$row->id.')" class="btn btn-sm btn-info">Edit</a>';
             })->rawColumns(['id'])
             ->editColumn('client_email', function($row)  {
@@ -35,14 +35,6 @@ class OrderController extends Controller
             })->addColumn('product_list', function($row) {
                 return $row->listProduct();
             })->make(true);
-
-            return $data;
-
-            $articles = Cache::remember('articles', 22*60, function() {//пример кеширования
-                return $data;
-                            });
-
-            return $articles;
           
    }
 
@@ -59,7 +51,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('orders.show', compact('id'));
     }
 
     /**

@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
 <h3>Список продуктов</h3>
