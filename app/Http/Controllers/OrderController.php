@@ -26,7 +26,10 @@ class OrderController extends Controller
                 return $row->statusWord();
             })->editColumn('id', function($row) {
                 return '<a href="/orders/show/'.$row->id.'">'.$row->id.'</a>'.' '.
-                '<a onclick="editForm('.$row->id.')" class="btn btn-sm btn-info">Edit</a>';
+                '<a onclick="editForm('.$row->id.')" class="btn btn-info""><span
+                            class="glyphicon glyphicon-pencil"></span></a>'.
+                '<a onclick="editForm('.$row->id.')" class="btn btn-danger""><span
+                            class="glyphicon glyphicon-trash"></span></a>';
             })->rawColumns(['id'])
             ->editColumn('client_email', function($row)  {
                 return $row->partner->name;
