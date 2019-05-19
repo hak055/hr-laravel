@@ -9,4 +9,6 @@
 
 
 
-![git1](https://user-images.githubusercontent.com/40661937/57198100-9437ff80-6f77-11e9-99b1-a441b6393e2d.png)
+
+
+![git](https://user-images.githubusercontent.com/40661937/57984121-0709a600-7a61-11e9-9e37-d0231706c834.png)
