@@ -26,10 +26,8 @@ class OrderController extends Controller
                 return $row->statusWord();
             })->editColumn('id', function($row) {
                 return '<a href="/orders/show/'.$row->id.'">'.$row->id.'</a>'.' '.
-                '<a onclick="editForm('.$row->id.')" class="btn btn-info""><span
-                            class="glyphicon glyphicon-pencil"></span></a>'.
-                '<a onclick="editForm('.$row->id.')" class="btn btn-danger""><span
-                            class="glyphicon glyphicon-trash"></span></a>';
+                '<a href="/orders/edit/'.$row->id.'" onclick="editForm('.$row->id.')" class="btn btn-info""><span
+                            class="glyphicon glyphicon-pencil"></span></a>';
             })->rawColumns(['id'])
             ->editColumn('client_email', function($row)  {
                 return $row->partner->name;
@@ -66,7 +64,7 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = Order::find($id);
-        return view('order_edit', compact('order'));
+        return view('orders.edit', compact('order'));
     }
 
     /**
@@ -104,6 +102,6 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+    	//
     }
 }

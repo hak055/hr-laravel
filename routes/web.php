@@ -21,6 +21,7 @@ Route::get('orders/create', 'OrderController@create');
 Route::get('orders/edit/{id}', 'OrderController@edit');
 Route::put('orders/{id}', 'OrderController@update');
 Route::get('orders/show/{id}', 'OrderController@show');
+// Route::get('orders/destroy/{id}', 'OrderController@destroy');
 
 
 Route::get('products', 'ProductController@index');
